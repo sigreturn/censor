@@ -1,7 +1,7 @@
 {
     "Group": "me.sigreturn",
     "Name": "Censor",
-    "Version": "1.0.0",
+    "Version": "1.1.0",
     "Description": "A simple and robust chat censoring plugin",
     "Main": "me.sigreturn.censor.CensorPlugin",
     "Authors": [

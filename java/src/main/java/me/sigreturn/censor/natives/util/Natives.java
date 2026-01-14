@@ -63,6 +63,11 @@ public class Natives {
                             "libcensor (Linux x86_64)",
                             LibcensorCensor.FACTORY),
 
+                    new NativeCodeLoader.Variant<>(NativeConstraints.WINDOWS_X86_64,
+                            copyAndLoadNative("/windows_x86_64/censor.dll"),
+                            "libcensor (Windows x86_64)",
+                            LibcensorCensor.FACTORY),
+
                     new NativeCodeLoader.Variant<>(NativeCodeLoader.ALWAYS, () -> {
                     }, "Java", JavaCensor.FACTORY)
             )

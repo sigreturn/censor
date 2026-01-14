@@ -13,6 +13,7 @@ public class NativeConstraints {
     private static final boolean CAN_GET_MEMORYADDRESS;
     private static final boolean IS_LINUX;
     private static final boolean IS_MUSL_LIBC;
+    private static final boolean IS_WINDOWS;
 
     static {
         final ByteBuf test = Unpooled.directBuffer();
@@ -22,11 +23,13 @@ public class NativeConstraints {
             test.release();
         }
 
-        String osArch = System.getProperty("os.arch", "");
+        final String osArch = System.getProperty("os.arch", "");
         IS_AMD64 = osArch.equals("amd64") || osArch.equals("x86_64");
         IS_AARCH64 = osArch.equals("aarch64") || osArch.equals("arm64");
 
-        IS_LINUX = System.getProperty("os.name", "").equalsIgnoreCase("Linux");
+        final String osName = System.getProperty("os.name", "");
+        IS_LINUX = osName.equalsIgnoreCase("Linux");
+        IS_WINDOWS = osName.contains("Windows");
 
         // Determine if we're using musl libc by invoking `ldd --version`.
         if (IS_LINUX) {
@@ -63,4 +66,7 @@ public class NativeConstraints {
 
     static final BooleanSupplier LINUX_AARCH64_MUSL = () -> NATIVE_BASE.getAsBoolean()
             && IS_LINUX && IS_AARCH64 && IS_MUSL_LIBC;
+
+    static final BooleanSupplier WINDOWS_X86_64 = () -> NATIVE_BASE.getAsBoolean()
+            && IS_WINDOWS && IS_AMD64;
 }
