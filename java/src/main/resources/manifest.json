@@ -1,0 +1,20 @@
+{
+    "Group": "me.sigreturn",
+    "Name": "Censor",
+    "Version": "1.0.0",
+    "Description": "A simple and robust chat censoring plugin",
+    "Main": "me.sigreturn.censor.CensorPlugin",
+    "Authors": [
+        {
+          "Name": "Mariya T.",
+          "Website": "https://github.com/sigreturn"
+        }
+    ],
+    "Website": "https://github.com/sigreturn/censor",
+    "ServerVersion": "*",
+    "Dependencies": {},
+    "OptionalDependencies": {},
+    "LoadBefore": {},
+    "DisabledByDefault": false,
+    "IncludesAssetPack": false
+}

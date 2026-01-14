@@ -1,0 +1,16 @@
+[package]
+name = "censor"
+version = "1.0.0"
+authors = ["Mariya T."]
+edition = "2024"
+
+[dependencies]
+jni = "0.21"
+rustrict = "0.7"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+strip = true
+lto = "thin"
