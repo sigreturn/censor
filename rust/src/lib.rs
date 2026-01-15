@@ -13,7 +13,7 @@ pub extern "system" fn Java_me_sigreturn_censor_natives_censor_NativeLibcensor_c
 ) -> jstring {
     let input: String = env
         .get_string(&input)
-        .expect("couldn't get Java string")
+        .expect("couldn't get input string")
         .into();
 
     let (censored, _) = Censor::from_str(input.as_str())
@@ -23,7 +23,7 @@ pub extern "system" fn Java_me_sigreturn_censor_natives_censor_NativeLibcensor_c
         .censor_and_analyze();
     let output = env
         .new_string(censored)
-        .expect("couldn't create Java string");
+        .expect("couldn't construct output string");
 
     output.into_raw()
 }
